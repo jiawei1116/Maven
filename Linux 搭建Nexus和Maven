@@ -1,0 +1,55 @@
+http://blog.csdn.net/ithomer/article/details/8975587
+
+Maven 安装请见我先前的博客： Linux 搭建 maven
+
+1， Nexus 下载
+Nexus 官方下载， 最新版下载： nexus-2.4.0-09-bundle.tar.gz
+Nexus war下载： nexus-2.4.0-09.war
+
+
+2， Nexus 安装
+（1） 创建解压文件夹： 
+mkdir nexus-2.4.0-09
+
+（2） 解压tar.gz文件： 
+tar zxvf nexus-2.4.0-09-bundle.tar.gz -C nexus-2.4.0-09
+注： nexus-2.4.0-09 内有两个文件夹 nexus-2.4.0-09 和 sonatype-work
+
+
+（3） 拷贝至/opt/目录下：
+sudo mv nexus-2.4.0-09 /opt/
+
+
+3， Nexus 启动
+nexus启动是在bin目录下，首先看一下启动/关闭/重启等命令， 输入命令：
+/opt/nexus-2.4.0-09/nexus-2.4.0-09/bin/nexus
+出现如下选项：
+
+
+启动nexus：
+/opt/nexus-2.4.0-09/nexus-2.4.0-09/bin/nexus  start
+
+
+关闭nexus： 
+/opt/nexus-2.4.0-09/nexus-2.4.0-09/bin/nexus  stop
+
+
+4， Nexus 验证
+启动nexus后，在浏览器输入地址： http://localhost:8081/nexus
+
+
+出现上述页面，说明配置nexus成功！
+
+管理员登陆
+点击右上角“Log in”， 输入用户名和密码（默认用户名：admin      密码： admin123）登录
+
+修改密码
+点击右上角“admin” ——》 Profile ——》 Change Password ——》 修改密码 和 邮箱，如下图：
+
+
+
+开启远程索引
+新搭建的neuxs环境只是一个空的仓库，需要手动和远程中心库进行同步，nexus默认是关闭远程索引下载，
+最重要的一件事情就是开启远程索引下载。登陆nexus系统，默认用户名密码为admin/admin123。
+点击左边Administration菜单下面的Repositories，找到右边仓库列表中的三个仓库Apache Snapshots、Codehaus Snapshots、Central，
+然后在每一个仓库的configuration下把Download Remote Indexes修改为true。然后在这三个仓库上分别右键，选择Repair Index，这样Nexus就会去下载远程的索引文件。
