@@ -56,3 +56,12 @@ nexus启动是在bin目录下，首先看一下启动/关闭/重启等命令， 
 最重要的一件事情就是开启远程索引下载。登陆nexus系统，默认用户名密码为admin/admin123。
 点击左边Administration菜单下面的Repositories，找到右边仓库列表中的三个仓库Apache Snapshots、Codehaus Snapshots、Central，
 然后在每一个仓库的configuration下把Download Remote Indexes修改为true。然后在这三个仓库上分别右键，选择Repair Index，这样Nexus就会去下载远程的索引文件。
+
+
+问题与解决
+[root@localhost bin]# ./nexus start
+****************************************
+WARNING - NOT RECOMMENDED TO RUN AS ROOT
+****************************************
+If you insist running as root, then set the environment variable RUN_AS_USER=root before running this script.
+修改vi ./bin/nexus 的 RUN_AS_USER=root
