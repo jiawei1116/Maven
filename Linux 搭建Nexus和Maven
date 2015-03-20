@@ -4,7 +4,10 @@ Maven 安装请见我先前的博客： Linux 搭建 maven
 
 1， Nexus 下载
 Nexus 官方下载， 最新版下载： nexus-2.4.0-09-bundle.tar.gz
+http://www.sonatype.org/downloads/nexus-latest-bundle.tar.gz
+
 Nexus war下载： nexus-2.4.0-09.war
+http://www.sonatype.org/downloads/nexus-latest.war
 
 
 2， Nexus 安装
