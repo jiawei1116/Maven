@@ -5,4 +5,4 @@ mvn install:install-file -Dfile={path/to/your/ojdbc.jar} -DgroupId=com.oracle
 -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 
 
-mvn install:install-file -Dfile=/lib/oracle/ojdbc6_g.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=lib/oracle/ojdbc6_g.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar -DgeneratePom=true
