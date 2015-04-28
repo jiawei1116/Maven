@@ -2,7 +2,7 @@
 mvn clean compile -f pom_application.xml
 mvn clean install -Dmaven.test.skip -f pom_application.xml
 --Junit Report
-mvn surefire-report:report -f pom_application.xml
+mvn clean compile surefire-report:report -f pom_application.xml
 --Cobertura
 mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
 
@@ -11,7 +11,7 @@ mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.x
 mvn clean compile -f pom_sender.xml
 mvn clean install -Dmaven.test.skip -f pom_sender.xml
 --Junit Report
-mvn surefire-report:report -f pom_sender.xml
+mvn clean compile surefire-report:report -f pom_sender.xml
 --Cobertura
 mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_sender.xml
 
@@ -19,7 +19,7 @@ mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_sender.xml
 mvn clean compile -f pom_receiver.xml
 mvn clean install -Dmaven.test.skip -f pom_receiver.xml
 --Junit Report
-mvn surefire-report:report -f pom_receiver.xml
+mvn clean compile surefire-report:report -f pom_receiver.xml
 --Cobertura
 mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_receiver.xml
 
