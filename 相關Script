@@ -6,6 +6,9 @@ mvn clean compile -f pom_application.xml
 mvn clean install -f pom_application.xml
 mvn clean install -Dmaven.test.skip -f pom_application.xml
 
+--Junit Reoort
 mvn surefire-report:report -f pom_application.xml
+
+--Cobertura
 mvn cobertura:help -f pom_application.xml 
 mvn cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
