@@ -1,0 +1,11 @@
+mvn clean compile -f pom_ant.xml
+mvn clean compile -f pom_receiver.xml
+mvn clean install -f pom_receiver.xml
+mvn clean install -f pom_sender.xml
+mvn clean compile -f pom_application.xml
+mvn clean install -f pom_application.xml
+mvn clean install -Dmaven.test.skip -f pom_application.xml
+
+mvn surefire-report:report -f pom_application.xml
+mvn cobertura:help -f pom_application.xml 
+mvn cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
