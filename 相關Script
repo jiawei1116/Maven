@@ -1,10 +1,31 @@
-mvn clean compile -f pom_ant.xml
-mvn clean compile -f pom_receiver.xml
-mvn clean install -f pom_receiver.xml
-mvn clean install -f pom_sender.xml
+#####application#####
 mvn clean compile -f pom_application.xml
-mvn clean install -f pom_application.xml
 mvn clean install -Dmaven.test.skip -f pom_application.xml
+--Junit Report
+mvn surefire-report:report -f pom_application.xml
+--Cobertura
+mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
+
+
+#####sender#####
+mvn clean compile -f pom_sender.xml
+mvn clean install -Dmaven.test.skip -f pom_sender.xml
+--Junit Report
+mvn surefire-report:report -f pom_sender.xml
+--Cobertura
+mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_sender.xml
+
+#####receiver#####
+mvn clean compile -f pom_receiver.xml
+mvn clean install -Dmaven.test.skip -f pom_receiver.xml
+--Junit Report
+mvn surefire-report:report -f pom_receiver.xml
+--Cobertura
+mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_receiver.xml
+
+
+#####others#####
+mvn cobertura:help -f pom_application.xml 
 
 --Junit Reoort
 mvn clean compile surefire-report:report -f pom_application.xml
