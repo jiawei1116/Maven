@@ -1,0 +1,8 @@
+http://blog.csdn.net/tylanbin/article/details/18766175
+
+在maven中使用cobertura-maven-plugin生成外掛程式的覆蓋率報告時，有可能會出現如下的錯誤：
+    net.sourceforge.cobertura.javancss.parser.TokenMgrError: Lexical error at line xx, column xx.
+
+出現該問題的原因，並不是我們哪兒的代碼出了問題，而是外掛程式本身對utf-8格式的中文支援不好引起的，當使用某些漢字組成的字串，如"倉庫"，這就會引發這個錯誤，而使用"測試"，則不會出現任何問題。
+
+知道了問題的產生原因之後，最為簡單的解決方法，自然就是避免使用會引發錯誤的漢字（具體什麼漢字會引發錯誤也不是很清楚）；第二就是使用簡單的編解碼來達到目的（如使用URLDecoder.decode(s, enc)方法）。
