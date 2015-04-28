@@ -1,0 +1,26 @@
+http://danlley.iteye.com/blog/102153
+1.pom檔內新增
+<plugin>  
+   <groupId>org.codehaus.mojo</groupId>  
+   <artifactId>cobertura-maven-plugin</artifactId>  
+</plugin>
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.12</version>
+    <configuration>
+        <argLine>-XX:-UseSplitVerifier</argLine>
+    </configuration>
+</plugin>
+
+2. 相關script
+mvn cobertura:help -f pom_application.xml 
+mvn cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
+
+mvn cobertura:help          查看cobertura外掛程式的幫助
+mvn cobertura:clean         清空cobertura外掛程式運行結果
+mvn cobertura:check         運行cobertura的檢查任務
+mvn cobertura:cobertura     運行cobertura的檢查任務並生成報表，報表生成在target/site/cobertura目錄下
+cobertura:dump-datafile     Cobertura Datafile Dump Mojo
+mvn cobertura:instrument    Instrument the compiled classes
