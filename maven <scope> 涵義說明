@@ -6,8 +6,7 @@ provided （已提供範圍）
 provided 依賴只有在當JDK 或者一個容器已提供該依賴之後才使用。例如， 如果你開發了一個web 應用，你可能在編譯 classpath 中需要可用的Servlet API 來編譯一個servlet，但是你不會想要在打包好的WAR 中包含這個Servlet API；這個Servlet API JAR 由你的應用伺服器或者servlet 容器提供。已提供範圍的依賴在編譯classpath （不是運行時）可用。它們不是傳遞性的，也不會被打包。
 
 runtime （運行時範圍）
-runtime 依賴在運行和測試系統的時候需要，但在編譯的時候不需要。比如，你可能在編譯的時候只需要JDBC API JAR，而只有在運行的時候才需要JDBC
-驅動實現。
+runtime 依賴在運行和測試系統的時候需要，但在編譯的時候不需要。比如，你可能在編譯的時候只需要JDBC API JAR，而只有在運行的時候才需要JDBC驅動實現。
 
 test （測試範圍）
 test範圍依賴 在一般的編譯和運行時都不需要，它們只有在測試編譯和測試運行階段可用。
