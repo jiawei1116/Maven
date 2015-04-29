@@ -1,0 +1,4 @@
+http://stamen.iteye.com/blog/1554987
+
+有時通過idea的依賴分析工具產生的樹不夠全，這時就需要使用mvn dependency:tree來查看依賴樹了。 
+通過mvn dependency:tree 查看依賴樹 
