@@ -1,0 +1,29 @@
+Sonatype Nexus 搭建Maven 私服
+
+Linux 搭建Nexus和Maven
+http://blog.csdn.net/ithomer/article/details/8975587
+
+http://blog.csdn.net/xuke6677/article/details/8482472
+
+使用nexus搭建maven私服
+http://blog.csdn.net/happyteafriends/article/details/7451061
+
+Mavne下nexus 建置, jar檔上傳注意事項
+http://www.360doc.com/content/11/0914/09/1108510_148088852.shtml
+
+Nexus : Maven Repository Server
+http://mactruecolor.blogspot.tw/2009/09/nexus-maven-repository-server.html
+
+Nexus : Maven Repository Server
+Nexus，一個Maven Repository Server，在區網內如果架設一個Nexus來提供開發人員使用，可以有效減少對外網路頻寬的浪費，也提供一個可以管理團隊自行開發library的機制，之前較多使用的是Apache Archiva，但是Archiva較為複雜，相較之下Nexus則無論在安裝上跟管理上都較為容易。 以下是我在Ubuntu 8.10 與 Tomcat 6.0.18下安裝的方式
+Download nexus-webapp-XXX.war
+Nexus的下載頁面在 http://nexus.sonatype.org/downloads/ ，雖然Nexus也有自帶jetty的版本，但我還是打算使用webapp來安裝，所以下載的是nexus-webapp-XXX.war。
+Deploy nexus-webapp-XXX.war
+將war改名為nexus.war後直接丟到${tomcat}/webapp下就好。
+設定sonatype-work權限 （各OS與distribution㑹有所不同）
+由於nexus需要實體目錄存放下載的檔案，所以㑹在/usr/share/tomcat6下建一個sonatype-work的目錄，但由於/usr/share/tomcat6的權限原屬於root，所以執行
+$> sudo mkdir /usr/share/tomcat6/sonatype-work
+$> sudo chown tomcat6:tomcat6 /usr/share/tomcat6/sonatype-work
+後再重起tomcat即可
+再來是設定client端maven2用的setting.xml
+加入下面的xml到setting.xml，將其中tomcat_ip與tomcat_port改成你實際使用的
