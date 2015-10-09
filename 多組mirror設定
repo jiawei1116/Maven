@@ -1,6 +1,9 @@
 Maven 遠程中央倉庫鏡像
 http://lychie.github.io/pages/articles/maven/15041621.html
 
+Mvn multi mirrors 從多個地方下載
+http://www.csdn123.com/html/blogs/20130820/55934.htm
+
 上面提到過的遠程倉庫, 
 maven 默認使用的服務地址是 https://repo.maven.apache.org/maven2, 
 你可以在 maven 的 super pom.xml 中找到它。實質上, 它使用的鏡像地址是 http://repo1.maven.org/maven2。
@@ -28,3 +31,13 @@ maven super pom.xml
 <mirrorOf>external:*</mirrorOf> 匹配除本地倉庫之外的所有庫
 <mirrorOf>*,!repo1</mirrorOf> 匹配除 repo1 之外的所有庫
 當一個庫匹配到多個鏡像時, maven 優先選擇與庫 id 完全匹配的鏡像, 若沒有, 則按照鏡像配置的先後順序取第一個。
+
+若要多加一組jbsoo repositories，因jboss會有吃到central的問題，故需將central排除
+<mirror>
+	<id>jboss-public-repository-group</id>
+	<name>JBoss Public Repository Group</name>
+	<url>http://repository.jboss.org/nexus/content/groups/public</url>
+	<mirrorOf>!central,*</mirrorOf><!--排除certral外，鏡像所以倉庫-->
+</mirror>
+
+
