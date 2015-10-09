@@ -40,4 +40,40 @@ maven super pom.xml
 	<mirrorOf>!central,*</mirrorOf><!--排除certral外，鏡像所以倉庫-->
 </mirror>
 
+重要的是：mirrorOf需與repositories中的id匹配，
 
+範例
+
+<mirror>  
+	<id>offical</id>  
+	<name>Maven Official Repository</name>  
+	<url>http://repo1.maven.org/maven2</url>  
+	<mirrorOf>central</mirrorOf>  
+</mirror>  
+<mirror>  
+	<id>jboss</id>  
+	<name>Jboss Repository</name>  
+	<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>  
+	<mirrorOf>central</mirrorOf>  
+</mirror>  
+
+
+
+<repositories>  
+    <repository>  
+        <id>offical</id>  
+        <name>Maven Official Repository</name>  
+        <url>http://repo1.maven.org/maven2</url>  
+        <snapshots>  
+            <enabled>false</enabled>  
+        </snapshots>  
+    </repository>  
+    <repository>  
+        <id>jboss</id>  
+        <name>Jboss Repository</name>  
+        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>  
+        <snapshots>  
+            <enabled>false</enabled>  
+        </snapshots>  
+    </repository>  
+</repositories>  
