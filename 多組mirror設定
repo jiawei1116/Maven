@@ -44,38 +44,50 @@ maven super pom.xml
 
 重要的是：mirrorOf需與repositories中的id匹配，
 
-範例
+========最終設定========
+<mirror>
+	<id>central</id>
+	<mirrorOf>central</mirrorOf>
+	<name>Maven Central</name>
+	<url>https://repo1.maven.org/maven2</url>
+</mirror>
+<mirror>
+	<id>jboss</id>
+	<name>JBoss Public Repository Group</name>
+	<!--  <url>http://repository.jboss.org/nexus/content/groups/public</url> -->
+	<url>http://repository.jboss.com/maven2</url>
+	<mirrorOf>!central,*</mirrorOf><!--排除certral外，鏡像所有倉庫-->
+</mirror> 
 
-<mirror>  
-	<id>offical</id>  
-	<name>Maven Official Repository</name>  
-	<url>http://repo1.maven.org/maven2</url>  
-	<mirrorOf>central</mirrorOf>  
-</mirror>  
-<mirror>  
-	<id>jboss</id>  
-	<name>Jboss Repository</name>  
-	<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>  
-	<mirrorOf>central</mirrorOf>  
-</mirror>  
 
 
-
-<repositories>  
-    <repository>  
-        <id>offical</id>  
-        <name>Maven Official Repository</name>  
-        <url>http://repo1.maven.org/maven2</url>  
-        <snapshots>  
-            <enabled>false</enabled>  
-        </snapshots>  
-    </repository>  
-    <repository>  
-        <id>jboss</id>  
-        <name>Jboss Repository</name>  
-        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>  
-        <snapshots>  
-            <enabled>false</enabled>  
-        </snapshots>  
-    </repository>  
-</repositories>  
+<profile>
+    <id>standard-extra-repos</id>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.com/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-plugins</id>
+            <url>http://repository.jboss.com/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</profile>
