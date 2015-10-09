@@ -1,0 +1,30 @@
+Maven 遠程中央倉庫鏡像
+http://lychie.github.io/pages/articles/maven/15041621.html
+
+上面提到過的遠程倉庫, 
+maven 默認使用的服務地址是 https://repo.maven.apache.org/maven2, 
+你可以在 maven 的 super pom.xml 中找到它。實質上, 它使用的鏡像地址是 http://repo1.maven.org/maven2。
+maven super pom.xml
+
+<repositories>
+  <repository>
+    <id>central</id>
+    <name>Central Repository</name>
+    <url>https://repo.maven.apache.org/maven2</url>
+    <layout>default</layout>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+
+
+具体位置是 ：
+%MAVEN_HOME%\lib\maven-settings-builder-3.2.5.jar\org\apache\maven\model\pom-4.0.0.xml 
+
+配置鏡像通常是為了提高獲取構件的速率, 鏡像往往能提供比中央倉庫更快的服務 ( 通常選擇地理位置上與自己較近的鏡像 ), 從而提高下載速度, 最終達到提高構建效率的目的。你可以在這裡配置多個鏡像, 值得一提的是, 只有當 mirrorOf 與 repository id 匹配時 ( 參考上面的 maven super pom.xml ), 該鏡像才會起作用。一個鏡像可以處理多個庫 ：
+<mirrorOf>*</mirrorOf> 能匹配所有的 repository id
+<mirrorOf>repo1,repo2</mirrorOf> 匹配 repo1 或 repo2 庫
+<mirrorOf>external:*</mirrorOf> 匹配除本地倉庫之外的所有庫
+<mirrorOf>*,!repo1</mirrorOf> 匹配除 repo1 之外的所有庫
+當一個庫匹配到多個鏡像時, maven 優先選擇與庫 id 完全匹配的鏡像, 若沒有, 則按照鏡像配置的先後順序取第一個。
