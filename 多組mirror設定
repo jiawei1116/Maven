@@ -4,6 +4,8 @@ http://lychie.github.io/pages/articles/maven/15041621.html
 Mvn multi mirrors 從多個地方下載
 http://www.csdn123.com/html/blogs/20130820/55934.htm
 
+http://www.iteye.com/problems/60531
+
 上面提到過的遠程倉庫, 
 maven 默認使用的服務地址是 https://repo.maven.apache.org/maven2, 
 你可以在 maven 的 super pom.xml 中找到它。實質上, 它使用的鏡像地址是 http://repo1.maven.org/maven2。
