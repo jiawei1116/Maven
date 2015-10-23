@@ -2,10 +2,12 @@
 mvn clean compile -f pom_application.xml
 mvn clean install -Dmaven.test.skip -f pom_application.xml
 --Junit Report
-mvn clean compile surefire-report:report -f pom_application.xml
+mvn clean compile surefire-report:report site -DgenerateReports=false -f pom_application.xml
 
 若有依sit uat prd環境
-則 mvn clean compile surefire-report:report -Plocal -f pom_application.xml 
+則 
+mvn clean compile surefire-report:report site -Plocal -f pom_application.xml
+mvn clean compile surefire-report:report site -DgenerateReports=false -Plocal -f pom_application.xml
 
 --Cobertura
 mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
