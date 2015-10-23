@@ -6,11 +6,12 @@ mvn clean compile surefire-report:report site -DgenerateReports=false -f pom_app
 
 若有依sit uat prd環境
 則 
-mvn clean compile surefire-report:report site -Plocal -f pom_application.xml
-mvn clean compile surefire-report:report site -DgenerateReports=false -Plocal -f pom_application.xml
+mvn clean compile surefire-report:report site -Plocal -f pom_application.xml -->產相關report
+mvn clean compile surefire-report:report site -DgenerateReports=false -Plocal -f pom_application.xml -->只產test report
 
 --Cobertura
 mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -f pom_application.xml
+mvn clean compile cobertura:cobertura -Dfile.encoding=utf-8 -Plocal -f pom_application.xml
 
 
 #####sender#####
